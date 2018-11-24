@@ -1,0 +1,96 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<script type="text/javascript">
+			var x=1
+			function addmorefunc()
+			{
+				
+   				var d = document.getElementById('addmore');
+   				d.innerHTML += "<input type='text' id='tst"+ x++ +"'><br >";
+			}
+        </script>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static "login/images/icons/favicon.ico" %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/vendor/bootstrap/css/bootstrap.min.css" %}">
+<!--=====================================================$==========================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/fonts/font-awesome-4.7.0/css/font-awesome.min.css" %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/fonts/iconic/css/material-design-iconic-font.min.css" %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/vendor/animate/animate.css" %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static "login/vendor/css-hamburgers/hamburgers.min.css" %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/vendor/animsition/css/animsition.min.css" %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/vendor/select2/select2.min.css" %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static "login/vendor/daterangepicker/daterangepicker.css" %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/css/util.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "login/css/main.css" %}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('{% static "login/images/edu.png" %}');">
+			<div class="wrap-login100">
+				<form method="POST" name="myform">
+                    {% csrf_token %}
+
+                    <img src=" {% static "welcome/img/edu.png" %}" width="400" height="100">
+                    Workspace name: <br><input type="text" name="wname" placeholder="Enter workspace name"/>
+                    <br><br>
+                    <h3>Invite people to workspace</h3>
+                    Enter mail id's:
+                    <br><br>
+                    <label>Number of mail id's: </label>                                          
+					<input type="text" id="total" name="total" value="0" readonly />
+					<br><br><br>
+					<div id="mfields">
+						<input type="button" class="login100-form-btn" id="more_fields" onclick="add_fields();" value="Add More" />         
+					</div>
+					<br><br><br>
+					<div>
+						<input type="button" class="login100-form-btn" name="submit" value="Submit"/>
+                    </div>
+
+                    
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="{% static "login/vendor/jquery/jquery-3.2.1.min.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "login/vendor/animsition/js/animsition.min.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "login/vendor/bootstrap/js/popper.js" %}"></script>
+	<script src="{% static "login/vendor/bootstrap/js/bootstrap.min.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "login/vendor/select2/select2.min.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "login/vendor/daterangepicker/moment.min.js" %}"></script>
+	<script src="{% static "login/vendor/daterangepicker/daterangepicker.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "login/vendor/countdowntime/countdowntime.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "login/js/main.js" %}"></script>
+	<script src="{% static "login/js/addmore.js" %}"></script>
+
+</body>
+
+</html>
+{% endblock %}
