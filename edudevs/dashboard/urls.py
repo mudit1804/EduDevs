@@ -5,5 +5,5 @@ urlpatterns = [
 	url(r'^$', views.dashboard, name='dashboard'),
 	url(r'^newworkspace/$', views.newworkspace, name='newworkspace'),
 	url(r'^joinworkspace/$', views.joinworkspace, name='joinworkspace'),
-
+	url(r'^mainpanel/', views.mainpanel, name='mainpanel')
 ]

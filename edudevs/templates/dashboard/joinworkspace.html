@@ -34,7 +34,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('{% static "login/images/edu.png" %}');">
 			<div class="wrap-login100">
-				<form method="POST">
+				<form method="POST" action=".">
 					{% csrf_token %}
 					 <img src=" {% static "welcome/img/edu.png" %}" width="400" height="100">
                     
@@ -43,9 +43,8 @@
                     </div>
                     <br><br><br>
                     <div class="container-login100-form-btn">
-						<button class="login100-form-btn" type="submit">
-							Join
-						</button>
+						
+						<input type="submit" class="login100-form-btn" name="submit" value="Submit"/>
 					</div>
 					
 				</form>

@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^register/', views.register, name='register'),
     url('^dashboard/', include('dashboard.urls')),
 
+
 ]

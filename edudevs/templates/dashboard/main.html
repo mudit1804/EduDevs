@@ -1,3 +1,5 @@
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html>
     
@@ -50,7 +52,7 @@
     
 <body>
 <div class="div1" align="center">
-     <img src=" {% static "welcome/img/edu.png" %}" width="400" height="100">
+     <img src=" {% static "welcome/img/edu.png" %}" width="400" height="80">
 
 <div>
     <button class="button1" onclick="window.location='{% url "newworkspace" %}';">Create a New Workspace</button>
@@ -64,6 +66,7 @@
 </body>
 
 </html>
+{% endblock %}
 
 
 

@@ -43,7 +43,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('{% static "login/images/edu.png" %}');">
 			<div class="wrap-login100">
-				<form method="POST" name="myform">
+				<form method="POST" action=".">
                     {% csrf_token %}
 
                     <img src=" {% static "welcome/img/edu.png" %}" width="400" height="100">
@@ -53,14 +53,14 @@
                     Enter mail id's:
                     <br><br>
                     <label>Number of mail id's: </label>                                          
-					<input type="text" id="total" name="total" value="0" readonly />
+					<input type="text" id="total" name="nemail" value="0" readonly />
 					<br><br><br>
 					<div id="mfields">
 						<input type="button" class="login100-form-btn" id="more_fields" onclick="add_fields();" value="Add More" />         
 					</div>
 					<br><br><br>
 					<div>
-						<input type="button" class="login100-form-btn" name="submit" value="Submit"/>
+						<input type="submit" class="login100-form-btn" name="submit" value="Submit"/>
                     </div>
 
                     
