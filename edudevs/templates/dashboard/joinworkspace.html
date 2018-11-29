@@ -33,20 +33,32 @@
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('{% static "login/images/edu.png" %}');">
+			
 			<div class="wrap-login100">
 				<form method="POST" action=".">
 					{% csrf_token %}
 					 <img src=" {% static "welcome/img/edu.png" %}" width="400" height="100">
                     
                     <div>
-                        WorkSpace Name:<input  type="text" name="workspace_name" placeholder="Enter the workspace name you want to join">
+                        WorkSpace Name:<input  type="text" name="wname" placeholder="Enter the workspace name you want to join">
                     </div>
                     <br><br><br>
                     <div class="container-login100-form-btn">
 						
 						<input type="submit" class="login100-form-btn" name="submit" value="Submit"/>
+						
 					</div>
+					<br>
+					<u>WorkSpaces you can login to:</u>
+					<li>
+						{% for workspace in loginworkspaces %}
+							<ul>{{ workspace }}</ul> 
+						{% endfor %}	
+					</li>
 					
+
+
+								
 				</form>
 			</div>
 		</div>

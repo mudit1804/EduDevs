@@ -48,7 +48,9 @@
 
                     <img src=" {% static "welcome/img/edu.png" %}" width="400" height="100">
                     Workspace name: <br><input type="text" name="wname" placeholder="Enter workspace name"/>
-                    <br><br>
+					<br><br>
+					Admin Mail: <br><input type="text" name="adminmail" value= {{ adminmail }} readonly >
+					<br><br>
                     <h3>Invite people to workspace</h3>
                     Enter mail id's:
                     <br><br>
@@ -60,7 +62,7 @@
 					</div>
 					<br><br><br>
 					<div>
-						<input type="submit" class="login100-form-btn" name="submit" value="Submit"/>
+						<input type="submit" class="login100-form-btn" name="submit" value="Submit" />
                     </div>
 
                     
@@ -69,13 +71,13 @@
 		</div>
 	</div>
 	
-
 	<div id="dropDownSelect1"></div>
 	
 <!--===============================================================================================-->
 	<script src="{% static "login/vendor/jquery/jquery-3.2.1.min.js" %}"></script>
 <!--===============================================================================================-->
-	<script src="{% static "login/vendor/animsition/js/animsition.min.js" %}"></script>
+	<script src="{% static "login/vendor/animsition/js/animsitio
+n.min.js" %}"></script>
 <!--===============================================================================================-->
 	<script src="{% static "login/vendor/bootstrap/js/popper.js" %}"></script>
 	<script src="{% static "login/vendor/bootstrap/js/bootstrap.min.js" %}"></script>

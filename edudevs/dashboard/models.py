@@ -9,6 +9,7 @@ from django.forms import ModelForm
 class workspaces(models.Model):
     id = models.AutoField(primary_key=True)
     wname = models.CharField(blank=False, max_length=200, unique=True)
+    adminmail = models.CharField(blank=True, max_length=200)
     nemail = models.CharField(blank=True, max_length=200)
     email1 = models.CharField(blank=True, max_length=200)
     email2 = models.CharField(blank=True, max_length=200)
@@ -22,6 +23,22 @@ class workspaces(models.Model):
 class workform(ModelForm):
     class Meta:
         model = workspaces
-        fields = ['wname','nemail','email1','email2','email3','email4','email5']
+        fields = ['wname','adminmail','nemail','email1','email2','email3','email4','email5']
+
+class requestedmailids(models.Model):
+    id = models.AutoField(primary_key=True)
+    mailid = models.CharField(blank=True, max_length=200)
+    requester = models.CharField(blank=True, max_length=200)
+    wname = models.CharField(blank=True, max_length=200)
+
+    def __str__(self):
+          return self.wname
+
+class requestmailform(ModelForm):
+    class Meta:
+        model = requestedmailids
+        fields = ['wname']
+
+
 
 
