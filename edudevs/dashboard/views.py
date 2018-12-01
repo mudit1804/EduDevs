@@ -23,9 +23,10 @@ def dashboard(request):
 
 
 @login_required(login_url='/$/')
-def mainpanel(request):
+def mainpanel(request, wname):
+    
     print "hoye"
-    return render(request,'dashboard/dashboard.html')
+    return render(request,'dashboard/dashboard.html',{'wname': wname})
 
 
 
@@ -64,8 +65,9 @@ def newworkspace(request):
                     send_mail(subject, text_msg, from_email, to_list, fail_silently=False, html_message=html_content
                         )
 
-            print emailids
-            return HttpResponseRedirect('/dashboard/mainpanel')
+            print emailids 
+            
+            return HttpResponseRedirect('/dashboard/mainpanel/' + wname)
         else:
             print form.errors
             
@@ -108,7 +110,7 @@ def joinworkspace(request):
             if(flag1 == True):
                 #mail id hai
                 print "hi mudit"
-                return HttpResponseRedirect('/dashboard/mainpanel')
+                return HttpResponseRedirect('/dashboard/mainpanel/' + wname)
 
 
             else:

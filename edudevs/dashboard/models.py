@@ -40,5 +40,18 @@ class requestmailform(ModelForm):
         fields = ['wname']
 
 
+class Room(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(blank=False, max_length=200)
+    wname = models.CharField(blank=True, max_length=200)
+    description = models.CharField(blank=True, max_length=1200)
+    slug = models.CharField(max_length=150, unique=True)
+
+    def __str__(self):
+        """Returns human-readable representation of the model instance."""
+        return self.name
+
+
+
 
 
