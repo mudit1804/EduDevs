@@ -1,0 +1,139 @@
+
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>EduDevs: {{ wname }}</title>
+  
+  
+  
+     <link rel="stylesheet" href="{% static "dashboard/css/style.css" %}">
+            <!-- <link rel="stylesheet" href="style.css" > -->
+    <style>
+        .button {
+            padding: 10px 15px;
+            font-size: 18px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            background-color: #4d394b;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .button:hover {background-color: #3e8e41}
+
+        .button:active {
+            background-color: #4d394b;
+            transform: translateY(4px);
+            margin: 10px;
+        }
+        a:link {
+            color: green;
+            background-color: transparent;
+            text-decoration: none;
+        }
+        a:visited {
+            color: pink;
+            background-color: transparent;
+            text-decoration: none;
+        }
+        a:hover {
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+        a:active {
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+    </style>
+    
+
+  
+</head>
+
+<body>
+
+  
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div class="header">
+        <a href="/dashboard/mainpanel/{{ wname }}"> <div class="team-menu">{{ wname }}</div></a>
+       <div class="channel-menu"><span class="channel-menu_name"><span class="channel-menu_prefix">#</span>{{ slug }}</span>
+<!--      <div> <img src=" {% static "welcome/img/edulogo.png" %}" width="200" height="100"> </div>-->
+          <a href="/dashboard/mainpanel/invite/invitepeople/{{ wname }}"><button class="button" type="button"  style="float: right;"> Invite People </button></a></div> 
+        
+    </div>
+    <div class="main">
+      <div class="listings">
+        <div class="listings_channels">
+          <div>
+              <h2 class="listings_header">Channels <a href="https://www.w3schools.com"> <img src="{% static "dashboard/img/addbutton.png" %}" style="width:22px;height:22px; float:right;"></a> </h2> 
+          </div>
+<!--
+           <ul class="channel_list">
+            <li class="channel active"><a class="channel_name"><span class="unread">0</span><span><span class="prefix">#</span>admin</span></a></li>
+            <li class="channel"><a class="channel_name"><span class="unread">10</span><span><span class="prefix">#</span>general</span></a></li>
+          </ul> 
+-->
+            <ul class="channel_list">
+                <li class="channel"><a href="/dashboard/mainpanel/{{ wname }}/general{{wname}}" class="channel_name"><b>#General</b></a></li>
+                <li class="channel"><a href="/dashboard/mainpanel/{{ wname }}/informal{{wname}}" class="channel_name"><b>#Informal</b></a></li>
+            </ul>
+            
+        </div>
+        <div class="listings_direct-messages">
+          <h2 class="listings_header">Messages</h2>
+          <ul class="channel_list">
+              {% for eachuser in currmembers %}
+                <li class="channel"><a href="#" class="channel_name"><b>{{ eachuser }}</b></a></li>
+              {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div id="messages" class="message-history">
+         
+          <!-- may be aplace to put messages -->
+        <!-- <div class="message"><a class="message_profile-pic" href=""></a><a class="message_username" href="">Chika</a><span class="message_timestamp">1:31 AM</span><span class="message_star"></span><span class="message_content">Slack Technologies, Inc. (originally Tiny Speck) is a computer software startup founded in 2009, with personnel located in Vancouver, San Francisco and Dublin. The core team is largely drawn from the founders of Ludicorp, the company that created Flickr. Slack is the fastest company to receive a billion dollar valuation.</span></div>
+        <div class="message"><a class="message_profile-pic" href=""></a><a class="message_username" href="">Chika</a><span class="message_timestamp">1:31 AM</span><span class="message_star"></span><span class="message_content">Rather than trying to make your own, use RocketMail instead.</span></div> -->
+      </div>
+    </div>
+    <div class="footer">
+            <div class="user-menu"><span class="user-menu_profile-pic"></span><span class="user-menu_username">{{ user.username }}</span><img class="connection_icon" src="data:image/png;base64,iVBORw0KGgoAAAAN..."/><span class="connection_status">online</span></div>
+      <form id="message-form">
+       <div class="input-box">
+            <input class="input-box_text" id="message-input" placeholder="Enter Your message....." type="text" autofocus/> 
+            <button type="submit"> <img src="{% static "dashboard/img/send.png" %}"  style="width:40x;height:40px; float:right;" > </button> 
+            <!-- <input type="submit" value="submit"/> -->
+        </div>
+
+      </form>
+     
+    </div>
+  </body>
+</html>
+  
+  <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
+  <script src="https://media.twiliocdn.com/sdk/js/chat/v2.0/twilio-chat.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+  <script src="{% static "dashboard/js/rooms.js" %}"></script>
+
+</body>
+
+
+</html>
+{% endblock %}

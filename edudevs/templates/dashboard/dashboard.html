@@ -7,7 +7,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>EduDevs</title>
+  <title>EduDevs: {{ wname }}</title>
   
   
   
@@ -54,6 +54,35 @@
             background-color: transparent;
             text-decoration: underline;
         }
+        div.a {
+            text-align: center;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 250%;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        div.b {
+            margin-top: 5px;
+            text-align: center;
+            font-family: "Verdana", Ganeva, sans-serif;
+            font-size: 150%;
+        }
+        div.c {
+            margin-top: 5px;
+            text-align: center;
+            font-family: "Verdana", Ganeva, sans-serif;
+            font-size: 150%;
+        }
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .center {
+            margin: auto;
+            align-content: center
+            width: 60%;
+        }
     </style>
     
 
@@ -75,14 +104,14 @@
       <div class="team-menu">{{ wname }}</div>
        <div class="channel-menu"><span class="channel-menu_name"><span class="channel-menu_prefix">#</span>Your_Workspace</span>
 <!--      <div> <img src=" {% static "welcome/img/edulogo.png" %}" width="200" height="100"> </div>-->
-         <button class="button" type="button" onclick="alert('Hello world!')" style="float: right;"> Invite People </button></div> 
+       <a href="/dashboard/mainpanel/invite/invitepeople/{{ wname }}"><button class="button" type="button"  style="float: right;"> Invite People </button></a></div> 
         
     </div>
     <div class="main">
       <div class="listings">
         <div class="listings_channels">
           <div>
-              <h2 class="listings_header">Channels <a href="https://www.w3schools.com"> <img src="{% static "dashboard/img/addbutton.png" %}" style="width:22px;height:22px; float:right;"></a> </h2> 
+              <h2 class="listings_header">Channels <a href="/dashboard/mainpanel/newchannel/channel/{{ wname }}"> <img src="{% static "dashboard/img/addbutton.png" %}" style="width:22px;height:22px; float:right;"></a> </h2> 
           </div>
 <!--
            <ul class="channel_list">
@@ -91,17 +120,38 @@
           </ul> 
 -->
             <ul class="channel_list">
-                <li class="channel"><a href="#" class="channel_name"><b>#general</b></a></li>
-                <li class="channel"><a href="#" class="channel_name"><b>#informal</b></a></li>
+                <li class="channel"><a href="/dashboard/mainpanel/{{ wname }}/general{{wname}}" class="channel_name"><b>#General</b></a></li>
+                <li class="channel"><a href="/dashboard/mainpanel/{{ wname }}/informal{{wname}}" class="channel_name"><b>#Informal</b></a></li>
             </ul>
             
         </div>
         <div class="listings_direct-messages">
           <h2 class="listings_header">Messages</h2>
+
+          <ul class="channel_list">
+              {% for eachuser in currmembers %}
+                <li class="channel"><a href="#" class="channel_name"><b>{{ eachuser }}</b></a></li>
+              {% endfor %}
+          </ul>
           <!-- <ul class="channel_list">
             <li class="channel"><a class="channel_name"><span class="unread">20</span><span><span class="prefix"> </span>kryton</span></a></li>
           </ul> -->
         </div>
+      </div>
+      <div class="center">
+          <img src="{% static "dashboard/img/edu.png" %}" align="middle">
+      </div>
+      
+      <div class="a">
+          A Path from Door to Desk!
+      </div>
+      
+      <div class="b">
+          At the time when your group needs to communicate and work on the project & share thoughts.
+      </div>
+      
+      <div class="c">
+          EduDevs makes it easy for everyone to collaborate.
       </div>
       <!-- <div class="message-history">
         <div class="message"><a class="message_profile-pic" href=""></a><a class="message_username" href="">Chika</a><span class="message_timestamp">1:31 AM</span><span class="message_star"></span><span class="message_content">Slack Technologies, Inc. (originally Tiny Speck) is a computer software startup founded in 2009, with personnel located in Vancouver, San Francisco and Dublin. The core team is largely drawn from the founders of Ludicorp, the company that created Flickr. Slack is the fastest company to receive a billion dollar valuation.</span></div>
@@ -109,10 +159,11 @@
       </div> -->
     </div>
     <div class="footer">
-      <div class="user-menu"><span class="user-menu_profile-pic"></span><span class="user-menu_username">{{ user.username }}</span><img class="connection_icon" src="data:image/png;base64,iVBORw0KGgoAAAAN..."/><span class="connection_status">online</span></div>
-      <div class="input-box">
-        <input class="input-box_text" type="text"/> <img src="{% static "dashboard/img/send.png" %}" onclick="window.open(/kin)" style="width:40x;height:40px; float:right;">
-      </div>
+      <div class="user-menu"><span class="user-menu_profile-pic"></span><span class="user-menu_username">{{ user.username }}</span></div>
+
+      <!-- <div class="input-box">
+        <input class="input-box_text" type="text"/> <img src="{% static "dashboard/img/send.png" %}" onclick="window.open(/kin)" style="width:40x;height:40px; float:right;" >
+      </div> -->
     </div>
   </body>
 </html>

@@ -25,6 +25,24 @@ class workform(ModelForm):
         model = workspaces
         fields = ['wname','adminmail','nemail','email1','email2','email3','email4','email5']
 
+class workforminv(ModelForm):
+    class Meta:
+        model = workspaces
+        fields = ['adminmail','nemail','email1','email2','email3','email4','email5']
+
+class newchannels(models.Model):
+    id = models.AutoField(primary_key=True)
+    channelname = models.CharField(blank=True, max_length=200)
+    wname = models.CharField(blank=True, max_length=200)
+
+    
+
+class channelform(ModelForm):
+    class Meta:
+        model = newchannels
+        fields = ['wname','channelname']
+    
+
 class requestedmailids(models.Model):
     id = models.AutoField(primary_key=True)
     mailid = models.CharField(blank=True, max_length=200)
