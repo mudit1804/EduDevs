@@ -122,6 +122,9 @@
             <ul class="channel_list">
                 <li class="channel"><a href="/dashboard/mainpanel/{{ wname }}/general{{wname}}" class="channel_name"><b>#General</b></a></li>
                 <li class="channel"><a href="/dashboard/mainpanel/{{ wname }}/informal{{wname}}" class="channel_name"><b>#Informal</b></a></li>
+                {% for channel in nchannels %}
+                    <li class="channel"><a href="/dashboard/mainpanel/{{ wname }}/{{channel}}{{wname}}" class="channel_name"><b>#{{ channel }}</b></a></li>
+                {% endfor %}
             </ul>
             
         </div>

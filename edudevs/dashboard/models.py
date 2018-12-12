@@ -32,7 +32,7 @@ class workforminv(ModelForm):
 
 class newchannels(models.Model):
     id = models.AutoField(primary_key=True)
-    channelname = models.CharField(blank=True, max_length=200)
+    cname = models.CharField(blank=True, max_length=200)
     wname = models.CharField(blank=True, max_length=200)
 
     
@@ -40,7 +40,7 @@ class newchannels(models.Model):
 class channelform(ModelForm):
     class Meta:
         model = newchannels
-        fields = ['wname','channelname']
+        fields = ['cname','wname']
     
 
 class requestedmailids(models.Model):

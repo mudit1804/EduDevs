@@ -39,12 +39,18 @@ def mainpanel(request, wname):
     curruser = request.user
     currmail = curruser.email
     allmailids = requestedmailids.objects.all()
+    allchannels = newchannels.objects.all()
+    nchannels = []
+    for channel in allchannels:
+        if(channel.wname == wname):
+            nchannels.append(channel.cname)
+    print nchannels
     for mailid in allmailids:
         if(mailid.wname == wname and mailid.mailid != currmail):
             currmembers.append(mailid.mailid)
 
 
-    return render(request,'dashboard/dashboard.html',{'wname': wname, 'currmembers': currmembers})
+    return render(request,'dashboard/dashboard.html',{'wname': wname, 'currmembers': currmembers, 'nchannels': nchannels})
 
 @login_required(login_url='/$/')
 def channel(request,wname,slug):
@@ -53,11 +59,18 @@ def channel(request,wname,slug):
     currmembers = []
     curruser = request.user
     currmail = curruser.email
+    allchannels = newchannels.objects.all()
+
+    nchannels = []
+    for channel in allchannels:
+        if(channel.wname == wname):
+            nchannels.append(channel.cname)
+
     allmailids = requestedmailids.objects.all()
     for mailid in allmailids:
         if(mailid.wname == wname and mailid.mailid != currmail):
             currmembers.append(mailid.mailid)
-    return render(request,'dashboard/channeldash.html',{'wname': wname, 'slug': slug, 'currmembers': currmembers})
+    return render(request,'dashboard/channeldash.html',{'wname': wname, 'slug': slug, 'currmembers': currmembers,  'nchannels': nchannels})
 
 
 
@@ -246,18 +259,12 @@ def newchannel(request, wname):
         print "in here man"
         form = channelform(request.POST)
         if form.is_valid():
-            
+            form.save()
             channelname = form.cleaned_data.get('cname')
             print channelname
-            # wname = form.cleaned_data.get('wname')
-            channelentry = newchannels(wname = wname, channelname = channelname)
-            channelentry.save()
             slug = channelname + wname
             g_room = Room(name=channelname, wname=wname, description="Stop by and say hi! Everyone's welcome.", slug=slug)
             g_room.save()
-
-           
-           
             #create two default channels: general and informal
            
             return HttpResponseRedirect('/dashboard/mainpanel/' + wname)
