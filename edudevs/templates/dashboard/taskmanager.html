@@ -1,0 +1,340 @@
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>EduDevs: Task Manager</title>
+    <script type="text/javascript">
+			var x=1
+			function addmorefunc()
+			{
+				
+   				var d = document.getElementById('addmore');
+   				d.innerHTML += "<input type='text' id='tst"+ x++ +"'><br >";
+			}
+        </script>
+  
+  
+  
+     <link rel="stylesheet" href="{% static "dashboard/css/style.css" %}">
+<!--             <link rel="stylesheet" href="style.css" >-->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static "login/images/icons/favicon.ico" %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/vendor/bootstrap/css/bootstrap.min.css" %}">
+<!--=====================================================$==========================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/fonts/font-awesome-4.7.0/css/font-awesome.min.css" %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/fonts/iconic/css/material-design-iconic-font.min.css" %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/vendor/animate/animate.css" %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static "login/vendor/css-hamburgers/hamburgers.min.css" %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/vendor/animsition/css/animsition.min.css" %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/vendor/select2/select2.min.css" %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static "login/vendor/daterangepicker/daterangepicker.css" %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static "login/css/util.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "login/css/main.css" %}">
+<!--===============================================================================================-->
+    <style>
+        .button {
+            padding: 10px 15px;
+            font-size: 18px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            background-color: #4d394b;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+        }
+        .button:hover {background-color: #3e8e41}
+        .button:active {
+            background-color: #4d394b;
+            transform: translateY(4px);
+            margin: 10px;
+        }
+        a:link {
+            color: green;
+            background-color: transparent;
+            text-decoration: none;
+        }
+        a:visited {
+            color: pink;
+            background-color: transparent;
+            text-decoration: none;
+        }
+        a:hover {
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+        a:active {
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+        div.a {
+            text-align: center;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 250%;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        div.b {
+            margin-top: 5px;
+            text-align: center;
+            font-family: "Verdana", Ganeva, sans-serif;
+            font-size: 150%;
+        }
+        div.c {
+            margin-top: 5px;
+            text-align: center;
+            font-family: "Verdana", Ganeva, sans-serif;
+            font-size: 150%;
+        }
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .center {
+            margin: auto;
+            align-content: center
+            width: 60%;
+        }
+    </style>
+    
+
+  
+</head>
+
+<body>
+
+  
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div class="header">
+        <a href="/dashboard/mainpanel/{{ wname }}"><div class="team-menu1">Task Manager</div></a>
+       <div class="channel-menu"><span class="channel-menu_name"><span class="channel-menu_prefix"></span></span>
+<!--      <div> <img src=" {% static "welcome/img/edulogo.png" %}" width="200" height="100"> </div>-->
+       </div> 
+        
+    </div>
+    <div class="main">
+      <div class="listings1">
+        <div class="listings_channels">
+          <div>
+              <h2 class="listings_header">Assigned Task <a href="/dashboard/mainpanel/newchannel/channel/{{ wname }}"> </a> </h2> 
+          </div>
+<!--
+           <ul class="channel_list">
+            <li class="channel active"><a class="channel_name"><span class="unread">0</span><span><span class="prefix">#</span>admin</span></a></li>
+            <li class="channel"><a class="channel_name"><span class="unread">10</span><span><span class="prefix">#</span>general</span></a></li>
+          </ul> 
+-->
+            <ul class="channel_list">
+                <!-- <li class="channel"><a href="/dashboard/mainpanel/{{ wname }}/general{{wname}}" class="channel_name"><b></b></a></li>
+                <li class="channel"><a href="/dashboard/mainpanel/{{ wname }}/informal{{wname}}" class="channel_name"><b>#Informal</b></a></li>
+                {% for channel in nchannels %}
+                    <li class="channel"><a href="/dashboard/mainpanel/{{ wname }}/{{channel}}{{wname}}" class="channel_name"><b>#{{ channel }}</b></a></li>
+                {% endfor %} -->
+                {% for tname, deadline in d.items %}
+                    <li class="channel">Task Name: {{ tname }}</li>
+                    <li class="channel">Deadline : {{ deadline }}</li>
+                    {% for taskn, status in d1.items %}
+                        {% if tname == taskn %}
+                            <li class="channel">Status : {{ status }}</li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    <a href="/dashboard/mainpanel/task/taskmanager/{{ tname }}/completed"><button type="button" class="login100-form-btn" style="padding: 0px; margin-left: 20px;" > Completed </button></a>
+                    <br><br>
+                {% endfor %}
+            </ul>
+            
+        </div>
+        <div class="listings_direct-messages">
+          <h2 class="listings_header">My Task</h2>
+
+          <ul class="channel_list">
+                {% for tname, allmail in mytasks.items %}
+                    <li class="channel">Task Name: {{ tname }}</li>
+                    <li class="channel">Associated Members: </li>
+                    {% for mail in allmail %}
+                        <li class="channel">=>{{ mail }}</li>
+                    {% endfor %}
+                {% endfor %}
+          </ul>
+          <!-- <ul class="channel_list">
+            <li class="channel"><a class="channel_name"><span class="unread">20</span><span><span class="prefix"> </span>kryton</span></a></li>
+          </ul> -->
+        </div>
+      </div>
+<!--
+      <div class="center">
+          <img src="{% static "dashboard/img/edu.png" %}" align="middle">
+      </div>
+-->
+   <div class="wrap-login100" style="margin: auto; height: auto;" >
+        <form method="POST">
+            {% csrf_token %}
+            
+            <!-- <span class="login100-form-logo">
+                <img src=" {% static "welcome/img/edulogo.png" %}" width="200" height="100">
+                <i class="zmdi zmdi-landscape"></i>
+            </span> -->
+            <img src=" {% static "welcome/img/edu.png" %}" width="400" height="100">
+
+            <span class="login100-form-title p-b-34 p-t-27">
+                Assign a New Task
+
+            </span>
+            <div class="wrap-input100 validate-input" data-validate = "Enter task name">
+                    Workspace name: <input class="input100" type="text" name="wname" value= {{ wname }} readonly>
+                    <!-- <span class="focus-input100" data-placeholder="&#xf207;"></span> -->
+            </div>
+            <div class="wrap-input100 validate-input" data-validate = "Enter task name">
+                    Your mail id: <input class="input100" type="text" name="adminmail" value= {{ mymail }} readonly>
+                        <!-- <span class="focus-input100" data-placeholder="&#xf207;"></span> -->
+            </div>
+        
+    
+
+
+            <div class="wrap-input100 validate-input" data-validate = "Enter task name">
+                <input class="input100" type="text" name="taskname" placeholder="Taskname">
+                <!-- <span class="focus-input100" data-placeholder="&#xf207;"></span> -->
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Enter Description of the Task">
+                <input class="input100" type="text" name="disc" placeholder="Description">
+                <!-- <span class="focus-input100" data-placeholder="&#xf191;"></span> -->
+            </div>
+
+<!--
+            <div class="contact100-form-checkbox">
+                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                <label class="label-checkbox100" for="ckb1">
+                    Remember me
+                </label>
+            </div>
+-->
+            <div class="wrap-input100 validate-input" data-validate="Enter Deadline Date">
+                Deadline: <input class="input100" type="date" name="deadline" placeholder="Deadline">
+                <!-- <span class="focus-input100" data-placeholder="&#xf191;"></span> -->
+            </div>
+            
+            <div>
+                <u>Members in the workspace you can assign task to: </u>
+                <br><br>
+            <li>
+                {% for mail in currmembers %}
+                    <ul>{{ mail }}</ul> 
+                {% endfor %}	
+            </li>
+            </div>
+            
+            <div>
+            <br> <br>
+            Enter mail id's:
+            <br><br>
+            <label>Number of mail id's: </label>                                          
+            <input type="text" id="total" name="nemail" value="0" readonly />
+            <br><br><br>
+            <div id="mfields">
+                <input type="button" class="login100-form-btn" id="more_fields" onclick="add_fields();" value="Add More" />         
+            </div>
+            <br><br><br>
+            <div>
+                <input type="submit" class="login100-form-btn" name="submit" value="Add Task" />
+            </div>
+            </div>
+            
+<!-- 
+            <div class="container-login100-form-btn">
+                <button class="login100-form-btn" type="submit">
+                    Add Task
+                </button>
+            </div> -->
+
+<!--
+            <div class="text-center p-t-90">
+                <a class="txt1" href="#">
+                    Forgot Password?
+                </a>
+                <br>
+                <a class="txt1" href="/register">
+                    Create Your Account
+                </a>
+
+            </div>
+-->
+        </form>
+    </div>
+      
+        <!-- <div class="limiter">
+		<div class="container-login100" style="background-image: url('{% static "login/images/edu.png" %}');">
+			
+		</div> -->
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="{% static "login/vendor/jquery/jquery-3.2.1.min.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "login/vendor/animsition/js/animsition.min.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "login/vendor/bootstrap/js/popper.js" %}"></script>
+	<script src="{% static "login/vendor/bootstrap/js/bootstrap.min.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "login/vendor/select2/select2.min.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "login/vendor/daterangepicker/moment.min.js" %}"></script>
+	<script src="{% static "login/vendor/daterangepicker/daterangepicker.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "login/vendor/countdowntime/countdowntime.js" %}"></script>
+<!--===============================================================================================-->
+    <script src="{% static "login/js/main.js" %}"></script>
+    <script src="{% static "login/js/addmore.js" %}"></script>
+    
+        
+      <!-- <div class="message-history">
+        <div class="message"><a class="message_profile-pic" href=""></a><a class="message_username" href="">Chika</a><span class="message_timestamp">1:31 AM</span><span class="message_star"></span><span class="message_content">Slack Technologies, Inc. (originally Tiny Speck) is a computer software startup founded in 2009, with personnel located in Vancouver, San Francisco and Dublin. The core team is largely drawn from the founders of Ludicorp, the company that created Flickr. Slack is the fastest company to receive a billion dollar valuation.</span></div>
+        <div class="message"><a class="message_profile-pic" href=""></a><a class="message_username" href="">Chika</a><span class="message_timestamp">1:31 AM</span><span class="message_star"></span><span class="message_content">Rather than trying to make your own, use RocketMail instead.</span></div>
+      </div> -->
+    </div>
+    <!-- <div class="footer">
+            <div class="user-menu"><span class="user-menu_profile-pic"></span><span class="user-menu_username">{{ user.username }}</span></div>
+
+      <!-- <div class="input-box">
+        <input class="input-box_text" type="text"/> <img src="{% static "dashboard/img/send.png" %}" onclick="window.open(/kin)" style="width:40x;height:40px; float:right;" >
+      </div> -->
+    </div> 
+  </body>
+</html>
+  
+  
+
+</body>
+
+</html>
+{% endblock %}

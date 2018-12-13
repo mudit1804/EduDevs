@@ -18,7 +18,7 @@ from twilio.jwt.access_token import AccessToken
 from twilio.jwt.access_token.grants import ChatGrant
 from django.http import JsonResponse
 from .models import channelform, newchannels
-
+from .models import Taskform, Task
 
 fake = Faker()
 
@@ -277,9 +277,103 @@ def newchannel(request, wname):
     return render(request,'dashboard/newchannel.html', {'wname': wname} )
     
 
+@login_required(login_url='/$/')
+def taskmanager(request, wname):
+    curruser = request.user
+    mymail = curruser.email
+    d = dict()
+    d1 = dict()
+    mytasks = dict()
+    currmembers = []
+    
+    allmailids = requestedmailids.objects.all()
+    for mailid in allmailids:
+        if(mailid.wname == wname and mailid.mailid != mymail):
+            currmembers.append(mailid.mailid)
+
+    alltasks = Task.objects.all()
+    for task in alltasks:
+        if(mymail == task.email1 or mymail == task.email2 or mymail == task.email3 or mymail == task.email4 or mymail == task.email5):
+            if(wname == task.wname):
+                d[task.taskname] = task.deadline
+    print d
+    
+    for task in alltasks:
+        if(mymail == task.email1 or mymail == task.email2 or mymail == task.email3 or mymail == task.email4 or mymail == task.email5):
+            if(wname == task.wname):
+                d1[task.taskname] = task.status
+        
+    for task in alltasks:
+        if(mymail == task.adminmail):
+            allmails = []
+            if(task.email1 != ""):
+                allmails.append(task.email1)
+            if(task.email2 != ""):
+                allmails.append(task.email2)
+            if(task.email3 != ""):
+                allmails.append(task.email3)
+            if(task.email4 != ""):
+                allmails.append(task.email4)
+            if(task.email5 != ""):
+                allmails.append(task.email5)
+
+            mytasks[task.taskname] = allmails
 
 
+    if request.method == 'POST':
+        print "in here man"
+        form = Taskform(request.POST)
+        if form.is_valid():
+            form.save()
+            taskname = form.cleaned_data.get('taskname')
+            
+            taskdesc = form.cleaned_data.get('disc')
+            taskdeadline = form.cleaned_data.get('deadline')
+            nemail = form.cleaned_data.get('nemail')
+            for i in range(1,int(nemail)+1):
+                ename = form.cleaned_data.get('email' + str(i))
+               
+                if ename != "":
+                    from_email = mymail
+                    to_list = [ename]
+                    subject = "EduDevs: New Task Assignment"
+                    text_msg = "Task Name: " + taskname + "\nTask Description: " + taskdesc + "\nDeadline: " + str(taskdeadline) + "\nVisit Edudevs to see the complete task."
+                    send_mail(subject, text_msg, from_email, to_list, fail_silently=False)
 
+                
+            return HttpResponseRedirect('/dashboard/mainpanel/' + wname)
+
+
+            
+
+    
+        else:
+            print form.errors
+            
+    else:
+        form = Taskform()
+        
+    return render(request,'dashboard/taskmanager.html', {'wname': wname, 'mymail': mymail, 'currmembers': currmembers, 'd': d, 'd1': d1, 'mytasks': mytasks} )
+    
+
+
+def taskcompleted(request, taskname):
+    print taskname
+    alltasks = Task.objects.all()
+    for task in alltasks:
+        if(task.taskname == taskname):
+            task.status = 'Completed'
+            task.save()
+            wname  = task.wname
+            break
+    
+    return HttpResponseRedirect('/dashboard/mainpanel/task/taskmanager/' + wname)
+
+    
+
+    
+
+    
 
 def token(request):
     curruser = request.user

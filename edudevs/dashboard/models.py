@@ -58,6 +58,27 @@ class requestmailform(ModelForm):
         fields = ['wname']
 
 
+class Task(models.Model):
+    id = models.AutoField(primary_key=True)
+    taskname = models.CharField(blank=False, max_length=200, unique=True)
+    disc =  models.CharField(blank=True, max_length=5000)
+    deadline = models.DateField(blank=True)
+    wname = models.CharField(blank=False, max_length=200)
+    adminmail = models.CharField(blank=True, max_length=200)
+    nemail = models.CharField(blank=True, max_length=200)
+    email1 = models.CharField(blank=True, max_length=200)
+    email2 = models.CharField(blank=True, max_length=200)
+    email3 = models.CharField(blank=True, max_length=200)
+    email4 = models.CharField(blank=True, max_length=200)
+    email5 = models.CharField(blank=True, max_length=200)
+    status = models.CharField(default='Pending', max_length=100)
+
+class Taskform(ModelForm):
+    class Meta:
+        model = Task
+        fields = ['taskname','disc','deadline','nemail','email1','email2','email3','email4','email5','wname','adminmail']
+
+
 class Room(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(blank=False, max_length=200)

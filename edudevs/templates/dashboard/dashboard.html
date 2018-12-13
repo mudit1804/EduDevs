@@ -104,7 +104,9 @@
       <div class="team-menu">{{ wname }}</div>
        <div class="channel-menu"><span class="channel-menu_name"><span class="channel-menu_prefix">#</span>Your_Workspace</span>
 <!--      <div> <img src=" {% static "welcome/img/edulogo.png" %}" width="200" height="100"> </div>-->
-       <a href="/dashboard/mainpanel/invite/invitepeople/{{ wname }}"><button class="button" type="button"  style="float: right;"> Invite People </button></a></div> 
+       <a href="/dashboard/mainpanel/invite/invitepeople/{{ wname }}"><button class="button" type="button"  style="float: right;"> Invite People </button></a>
+
+       <a href="/dashboard/mainpanel/task/taskmanager/{{ wname }}"><button class="button" type="button"  style="float: right;"> Task Manager </button></a></div> 
         
     </div>
     <div class="main">
@@ -129,7 +131,7 @@
             
         </div>
         <div class="listings_direct-messages">
-          <h2 class="listings_header">Messages</h2>
+          <h2 class="listings_header">Members</h2>
 
           <ul class="channel_list">
               {% for eachuser in currmembers %}

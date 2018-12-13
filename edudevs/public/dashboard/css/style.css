@@ -164,6 +164,20 @@ main {
   cursor: pointer;
 }
 
+.team-menu1 {
+  position: relative;
+  width: 300px;
+  height: 53px;
+  line-height: 53px;
+  font-weight: 900;
+  padding: 0 1rem;
+  color: #ffffff;
+  background: #3e313c;
+  border-bottom: 2px solid #372c36;
+  float: left;
+  cursor: pointer;
+}
+
 .channel-menu_name {
   display: inline-block;
   padding: 0 0.5rem 0 1.5rem;
@@ -181,7 +195,7 @@ main {
 }
 
 .listings {
-  height: 100%;
+  height: 250%;
   width: 240px;
   float: left;
   color: #ab9ba9;
@@ -189,6 +203,18 @@ main {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+.listings1 {
+  height: 250%;
+  width: 300px;
+  float: left;
+  color: #ab9ba9;
+  background-color: #4d394b;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
 
 .message-history {
   margin-left: 220px;
@@ -312,6 +338,20 @@ main {
 .user-menu {
   float: left;
   width: 240px;
+  height: 100%;
+  cursor: pointer;
+  background: #3e313c;
+  border-top: 2px solid #372c36;
+  padding: 5px 0 5px 5px;
+  height: 4rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.user-menu1 {
+  float: left;
+  width: 300px;
   height: 100%;
   cursor: pointer;
   background: #3e313c;

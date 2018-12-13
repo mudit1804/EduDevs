@@ -9,7 +9,11 @@ urlpatterns = [
 	url(r'^token/$', views.token, name="token"),
 	url(r'^mainpanel/(?P<wname>[\w\-]+)/(?P<slug>[\w\-]+)/$', views.channel, name='channel'),
 	url(r'^mainpanel/invite/invitepeople/(?P<wname>[\w\-]+)/$', views.invitepeople, name='invitepeople'),
-	url(r'^mainpanel/newchannel/channel/(?P<wname>[\w\-]+)/$', views.newchannel, name='newchannel')
+	url(r'^mainpanel/newchannel/channel/(?P<wname>[\w\-]+)/$', views.newchannel, name='newchannel'),
+	url(r'^mainpanel/task/taskmanager/(?P<wname>[\w\-]+)/$', views.taskmanager, name='taskmanager'),
+    url(r'^mainpanel/task/taskmanager/(?P<taskname>[\w ]+)/completed/$', views.taskcompleted, name='taskcompleted')
+	
+
 
 
 
